@@ -1,0 +1,16 @@
+export { default as searchIcon } from "./search.svg";
+export { default as logo } from "./logo.svg";
+export { default as cat_img } from "./animals/cat.svg";
+export { default as dog_img } from "./animals/dog.svg";
+export { default as footprint_img } from "./symbols/animal-footprint.svg";
+export { default as arrowDown } from "./symbols/arrow-down.svg";
+export { default as profile_circle } from "./symbols/profile-circle.svg";
+export { default as add_circle } from "./symbols/add-circle.svg";
+export { default as edit } from "./symbols/edit.svg";
+export { default as trash } from "./symbols/delete.svg";
+export { default as close } from "./symbols/close.svg";
+export { default as arrow_left } from "./symbols/arrow-left.svg";
+export { default as phone } from "./symbols/phone-call.svg";
+export { default as dna } from "./symbols/dna.svg";
+export { default as calendar } from "./symbols/calendar.svg";
+export { default as collar } from "./symbols/dog-collar.svg";

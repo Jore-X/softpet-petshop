@@ -1,0 +1,187 @@
+.modal-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  /* __ */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  aspect-ratio: 4/2;
+  width: 100%;
+  /* height: 100%; */
+  max-width: 500px;
+  /* max-height: 400px; */
+  /* __ */
+  background: linear-gradient(to top left, #000814, #001e4d);
+  padding: 16px;
+  gap: 16px;
+  border: 3px solid;
+  border-image: linear-gradient(to right, #00cafc, #0056e2) 1;
+  box-shadow: 0 0 15px #0056e2;
+  /* border-radius: 20px; */
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 4px;
+  width: 100%;
+  max-height: 90px;
+}
+
+.modalHeader .modalLogo {
+  display: flex;
+  gap: 8px;
+}
+.modalHeader .modalLogo > h1 {
+  font-size: 2.2rem;
+}
+
+.modalHeader .icon-header-box {
+  height: 70%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50px;
+
+  background: linear-gradient(to right, #00cafc, #0056e2);
+  aspect-ratio: 1/1;
+}
+
+.modalHeader > * {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.modalHeader img {
+  height: 75%;
+  /* height: 2.5rem; */
+}
+
+.btn-close-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  aspect-ratio: 1/1;
+  background: none;
+  border: none;
+}
+.btn-close-modal > img {
+  height: 50%;
+}
+
+.modalGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  gap: 12px;
+}
+
+.modalGrid .itemGrid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modalGrid .itemGrid > * {
+  width: 100%;
+}
+.modalGrid .itemGrid > label {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  text-align: start;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+.modalGrid .itemGrid > label > img {
+  height: 1.05rem;
+}
+
+#selectAnimals,
+.modal input {
+  background: none;
+  border: 1px solid grey;
+  padding: 6px;
+  border-radius: 8px;
+}
+#selectAnimals option {
+  background: #001e4d;
+}
+
+/* ________________________ */
+/* Estado dos inputs na opção de remover */
+.modal.disable #selectAnimals,
+.modal.disable .itemGrid input {
+  pointer-events: none;
+  background: grey;
+}
+.modal.disable .itemGrid label {
+  pointer-events: none;
+}
+/* ________________________ */
+.btnsModal-box {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+}
+
+.btnsModal-box > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+
+  aspect-ratio: 5/1;
+  width: 40%;
+  max-width: 231px;
+  max-height: 40px;
+
+  font-weight: 700;
+}
+
+.btnsModal-box > * img {
+  padding: 4px;
+}
+
+.btnsModal-box > .cancel > *,
+.btnsModal-box > .save > * {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.btnsModal-box > .cancel {
+  background: #e7e7e3;
+  color: #0056e2;
+}
+.btnsModal-box > .save {
+  background: linear-gradient(to right, #00cafc, #0056e2);
+}
+
+.modal.disable .btnsModal-box > .save {
+  background: #ed254e;
+}
