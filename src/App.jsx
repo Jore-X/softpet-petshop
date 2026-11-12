@@ -90,14 +90,6 @@ function App() {
 
   // _____________________________
   function addNewPet(newData) {
-    if (!newData.name.trim()) {
-      alert("Digite um nome.");
-      return;
-    }
-    if (!newData.owner.trim()) {
-      alert("Digite o Dono.");
-      return;
-    }
 
     setPets([...pets, newData]);
 

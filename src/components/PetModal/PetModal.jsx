@@ -188,14 +188,24 @@ function PetModal(props) {
           <button
             className="save"
             onClick={() => {
-              switch (props.choice_modal.toLowerCase()) {
-                case "toedit":
+              if (props.choice_modal !== "toDelete") {
+                if (!newData.name.trim()) {
+                  alert("Digite um nome.");
+                  return;
+                }
+                if (!newData.owner.trim()) {
+                  alert("Digite o Dono.");
+                  return;
+                }
+              }
+              switch (props.choice_modal) {
+                case "toEdit":
                   props.editPet(props.petSelected.id, newData);
                   break;
-                case "toadd":
+                case "toAdd":
                   props.addNewPet(newData);
                   break;
-                case "todelete":
+                case "toDelete":
                   props.deletePet(props.petSelected.id);
                   break;
                 default:
