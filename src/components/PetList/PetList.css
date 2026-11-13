@@ -171,3 +171,35 @@
 .btnsList-box .btnRemove {
   background: #ed254e;
 }
+
+/* Controle de paginas */
+.pages-control-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  padding: 12px;
+  gap: 8px;
+}
+.pages-control-box > span {
+  font-size: 1.1rem;
+}
+.pages-control-box > button {
+  background: none;
+  border: none;
+
+  display: flex;
+  align-items: center;
+
+  padding: 8px;
+}
+.pages-control-box > button img {
+  width: 2.2em;
+}
+.pages-control-box > .btn-pages-back img {
+  transform: rotateZ(90deg);
+}
+.pages-control-box > .btn-pages-next img {
+  transform: rotateZ(-90deg);
+}

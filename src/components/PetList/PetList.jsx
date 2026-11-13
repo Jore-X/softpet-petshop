@@ -49,87 +49,116 @@ function PetList(props) {
   }
 
   return (
-    <ul className="petList-grid">
-      {/* .map() percorre o array criando um novo com o 
+    <>
+      <ul className="petList-grid">
+        {/* .map() percorre o array criando um novo com o 
         resultado de alguma alteração */}
-      {props.pets.map((pet) => (
-        <li
-          // tabIndex={props.modalType !== null ? -1 : 0} //permite focar com o tab
-          // role="button"
-          key={pet.id}
-          // onKeyDown={(event) => pressDown(pet.id, event)}
-          className={`${liState === pet.id ? "active" : ""}`}
-        >
-          <div className="imgList-box">{animalImg(pet.specie)}</div>
-          <div className="listNames-box">
-            <div className="petName-box">
-              <img src={collar} alt="" />
-              <span>{pet.name}</span>
-            </div>
-            <div className="ownerName-box">
-              <img src={profile_circle} alt="" />
-
-              <span>{pet.owner}</span>
-            </div>
-          </div>
-          <button
-            className="openOverlay-btn"
-            aria-label="Mostrar Detalhes do Pet"
-            tabIndex={props.modalType === null ? 0 : -1}
-            onClick={() => {
-              openPetOverlay(pet.id);
-            }}
+        {props.pets.map((pet) => (
+          <li
+            // tabIndex={props.modalType !== null ? -1 : 0} //permite focar com o tab
+            // role="button"
+            key={pet.id}
+            // onKeyDown={(event) => pressDown(pet.id, event)}
+            className={`${liState === pet.id ? "active" : ""}`}
           >
-            <img className="arrowDown" src={arrowDown} alt="Seta para baixo" />
-          </button>
-          <div className="petData-overlay">
-            <div className="info-item">
-              <img src={dna} alt="" />
-              <span>Raça: {pet.breed}</span>
+            <div className="imgList-box">{animalImg(pet.specie)}</div>
+            <div className="listNames-box">
+              <div className="petName-box">
+                <img src={collar} alt="" />
+                <span>{pet.name}</span>
+              </div>
+              <div className="ownerName-box">
+                <img src={profile_circle} alt="" />
+
+                <span>{pet.owner}</span>
+              </div>
             </div>
-            <div className="info-item">
-              <img src={phone} alt="" />
-              <span>Telefone: {pet.phone}</span>
+            <button
+              className="openOverlay-btn"
+              aria-label="Mostrar Detalhes do Pet"
+              tabIndex={props.modalType === null ? 0 : -1}
+              onClick={() => {
+                openPetOverlay(pet.id);
+              }}
+            >
+              <img
+                className="arrowDown"
+                src={arrowDown}
+                alt="Seta para baixo"
+              />
+            </button>
+            <div className="petData-overlay">
+              <div className="info-item">
+                <img src={dna} alt="" />
+                <span>Raça: {pet.breed}</span>
+              </div>
+              <div className="info-item">
+                <img src={phone} alt="" />
+                <span>Telefone: {pet.phone}</span>
+              </div>
+              <div className="info-item">
+                <img src={calendar} alt="" />
+                <span>Data: {pet.birthDate}</span>
+              </div>
+              <div className="btnsList-box">
+                <button
+                  tabIndex={
+                    liState === pet.id && props.modalType === null ? 0 : -1
+                  }
+                  // tabIndex={liState !== null && props.modalType === null ? 0 : -1}
+                  className="btnEdit"
+                  onClick={() => {
+                    props.setmodalType("toEdit");
+                    props.setPetSelected(pet);
+                  }}
+                >
+                  <img src={edit} alt="" />
+                  <span>Editar</span>
+                </button>
+                <button
+                  tabIndex={
+                    liState === pet.id && props.modalType === null ? 0 : -1
+                  }
+                  // tabIndex={liState !== null && props.modalType === null ? 0 : -1}
+                  className="btnRemove"
+                  onClick={() => {
+                    props.setmodalType("toDelete");
+                    props.setPetSelected(pet);
+                    // props.deletePet(pet.id);
+                  }}
+                >
+                  <img src={trash} alt="" />
+                  <span> Remover</span>
+                </button>
+              </div>
             </div>
-            <div className="info-item">
-              <img src={calendar} alt="" />
-              <span>Data: {pet.birthDate}</span>
-            </div>
-            <div className="btnsList-box">
-              <button
-                tabIndex={
-                  liState === pet.id && props.modalType === null ? 0 : -1
-                }
-                // tabIndex={liState !== null && props.modalType === null ? 0 : -1}
-                className="btnEdit"
-                onClick={() => {
-                  props.setmodalType("toEdit");
-                  props.setPetSelected(pet);
-                }}
-              >
-                <img src={edit} alt="" />
-                <span>Editar</span>
-              </button>
-              <button
-                tabIndex={
-                  liState === pet.id && props.modalType === null ? 0 : -1
-                }
-                // tabIndex={liState !== null && props.modalType === null ? 0 : -1}
-                className="btnRemove"
-                onClick={() => {
-                  props.setmodalType("toDelete");
-                  props.setPetSelected(pet);
-                  // props.deletePet(pet.id);
-                }}
-              >
-                <img src={trash} alt="" />
-                <span> Remover</span>
-              </button>
-            </div>
-          </div>
-        </li>
-      ))}
-    </ul>
+          </li>
+        ))}
+      </ul>
+      <div className="pages-control-box">
+        <button
+          className="btn-pages-back"
+          onClick={() => {
+            props.setCurrentPage(props.currentPage - 1);
+          }}
+          disabled={props.currentPage === 1}
+        >
+          <img src={arrowDown} alt="seta para voltar" />
+          <span>Anterior</span>
+        </button>
+        <span>{`${props.currentPage} / ${props.totalPages}`}</span>
+        <button
+          className="btn-pages-next"
+          onClick={() => {
+            props.setCurrentPage(props.currentPage + 1);
+          }}
+          disabled={props.currentPage === props.totalPages}
+        >
+          <span>Próximo</span>
+          <img src={arrowDown} alt="seta para o próximo" />
+        </button>
+      </div>
+    </>
   );
 }
 

@@ -97,7 +97,6 @@ function App() {
     ],
   );
 
-
   // salva o array automaticamente a cada alteração
   useEffect(() => {
     saveLocalStorage("arrayPets", pets);
@@ -139,6 +138,44 @@ function App() {
       pet.specie.toLowerCase().includes(search.toLowerCase()) ||
       pet.owner.toLowerCase().includes(search.toLowerCase()),
   );
+
+  // _____________________________
+  // Controle de Paginação
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search]);
+
+  // pets por pagina
+  const petsPerPage = 8;
+
+  // Math.max retorna o valor maior entre os dois
+  // previne que totalPages se torne 0 se não encontrar nenhum pet.
+  const totalPages = Math.max(
+    1,
+    // total de paginas, faz a divisão e arredonda para cima]
+    Math.ceil(petsFiltereds.length / petsPerPage),
+  );
+
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setCurrentPage(totalPages);
+    }
+  }, [currentPage, totalPages]);
+
+  // ___________________________________________________
+  // Lógica: Pagina atual é 1, elementos por pagina é 5
+  // 1 * 5 = 5. o numero 5 se torna o index do ultimo elemento
+  const lastPetIndex = currentPage * petsPerPage;
+  // sendo 5 o index do ultimo, fazendo 5 - 5 = 0
+  // 0 é o index do primeiro elemento
+  const firstPetIndex = lastPetIndex - petsPerPage;
+  // ___________________________________________________
+
+  // Seleciona determinado intervalo do array
+  const currentPets = petsFiltereds.slice(firstPetIndex, lastPetIndex);
   // _____________________________
 
   const [modalType, setmodalType] = useState(null);
@@ -179,7 +216,10 @@ function App() {
       <p className="userSearch">Você esta buscando: {search}</p>
 
       <PetList
-        pets={petsFiltereds}
+        pets={currentPets}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalPages={totalPages}
         deletePet={deletePet}
         modalType={modalType}
         setmodalType={setmodalType}
