@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 // _____________________________________________________
@@ -15,82 +15,99 @@ import { searchIcon, add_circle, edit, trash } from "./assets/icons";
 // _____________________________________________________
 
 function App() {
+  // função para salvar os dados no LocalStorage
+  function saveLocalStorage(key, value) {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  }
+  //função que pega os dados do LocalStorage
+  function getLocalStorage(key) {
+    const storedValue = window.localStorage.getItem(key);
+    return storedValue ? JSON.parse(storedValue) : null;
+  }
+
   // variavel do valor de pesquisa
   const [search, setSearch] = useState("");
 
   // array de pets
-  const [pets, setPets] = useState([
-    {
-      id: 1,
-      name: "Rex",
-      specie: "Cachorro",
-      owner: "Carlos Silva",
-      breed: "Vira-lata",
-      phone: "(11) 99999-1111",
-      birthDate: "2022-05-10",
-    },
-    {
-      id: 2,
-      name: "Mimi",
-      specie: "Gato",
-      owner: "Ana Oliveira",
-      breed: "Siamês",
-      phone: "(21) 98888-2222",
-      birthDate: "2023-08-15",
-    },
-    {
-      id: 3,
-      name: "Thor",
-      specie: "Cachorro",
-      owner: "Marcos Souza",
-      breed: "Golden Retriever",
-      phone: "(31) 97777-3333",
-      birthDate: "2021-01-20",
-    },
-    {
-      id: 4,
-      name: "Luna",
-      specie: "Gato",
-      owner: "Julia Costa",
-      breed: "Persa",
-      phone: "(11) 96666-4444",
-      birthDate: "2024-03-05",
-    },
-    {
-      id: 5,
-      name: "Mel",
-      specie: "Cachorro",
-      owner: "Roberto Dias",
-      breed: "Poodle",
-      phone: "(19) 95555-5555",
-      birthDate: "2020-11-12",
-    },
-    {
-      id: 6,
-      name: "Fred",
-      specie: "Ave",
-      owner: "Fernanda Lima",
-      breed: "Calopsita",
-      phone: "(81) 94444-6666",
-      birthDate: "2019-07-25",
-    },
-    {
-      id: 7,
-      name: "Pipoca",
-      specie: "Outro",
-      owner: "Bruno Gomes",
-      breed: "Hamster Sírio",
-      phone: "(41) 93333-7777",
-      birthDate: "2023-12-01",
-    },
-  ]);
+  const [pets, setPets] = useState(
+    getLocalStorage("arrayPets") || [
+      {
+        id: 1,
+        name: "Rex",
+        specie: "Cachorro",
+        owner: "Carlos Silva",
+        breed: "Vira-lata",
+        phone: "(11) 99999-1111",
+        birthDate: "2022-05-10",
+      },
+      {
+        id: 2,
+        name: "Mimi",
+        specie: "Gato",
+        owner: "Ana Oliveira",
+        breed: "Siamês",
+        phone: "(21) 98888-2222",
+        birthDate: "2023-08-15",
+      },
+      {
+        id: 3,
+        name: "Thor",
+        specie: "Cachorro",
+        owner: "Marcos Souza",
+        breed: "Golden Retriever",
+        phone: "(31) 97777-3333",
+        birthDate: "2021-01-20",
+      },
+      {
+        id: 4,
+        name: "Luna",
+        specie: "Gato",
+        owner: "Julia Costa",
+        breed: "Persa",
+        phone: "(11) 96666-4444",
+        birthDate: "2024-03-05",
+      },
+      {
+        id: 5,
+        name: "Mel",
+        specie: "Cachorro",
+        owner: "Roberto Dias",
+        breed: "Poodle",
+        phone: "(19) 95555-5555",
+        birthDate: "2020-11-12",
+      },
+      {
+        id: 6,
+        name: "Fred",
+        specie: "Ave",
+        owner: "Fernanda Lima",
+        breed: "Calopsita",
+        phone: "(81) 94444-6666",
+        birthDate: "2019-07-25",
+      },
+      {
+        id: 7,
+        name: "Pipoca",
+        specie: "Outro",
+        owner: "Bruno Gomes",
+        breed: "Hamster Sírio",
+        phone: "(41) 93333-7777",
+        birthDate: "2023-12-01",
+      },
+    ],
+  );
+
+
+  // salva o array automaticamente a cada alteração
+  useEffect(() => {
+    saveLocalStorage("arrayPets", pets);
+  }, [pets]);
 
   // const [name, setName] = useState("");
   // const [specie, setSpecie] = useState("Cachorro");
 
   // _____________________________
   function addNewPet(newData) {
-
     setPets([...pets, newData]);
 
     // Para esvaziar os campos após o envio
