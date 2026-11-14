@@ -1,16 +1,68 @@
-# React + Vite
+# SoftPet 🐾
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sistema de gerenciamento de pets desenvolvido com React e Vite, como parte do desafio Dev Jr. da SoftMakers.
 
-Currently, two official plugins are available:
+## Preview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+<!-- ADICIONE AQUI UMA CAPTURA DE TELA DO PROJETO -->
 
-## React Compiler
+![Preview do SoftPet](./screenshots/preview.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Deploy:** [Acessar SoftPet]()
 
-## Expanding the ESLint configuration
+**Desafio original:** [SoftMakers Challenges](https://github.com/BrSoftMakers/desafio-junior-1)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Funcionalidades
+
+- Cadastro de pets.
+- Edição e exclusão de registros.
+- Busca por nome, espécie e tutor.
+- Paginação adaptável ao tamanho da tela.
+- Visualização de detalhes dos pets.
+- Persistência dos dados utilizando LocalStorage.
+- Interface responsiva.
+
+## Tecnologias
+
+- React
+- JavaScript
+- CSS
+- Vite
+- LocalStorage
+
+## Como executar
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/Jore-X/softpet-petshop
+```
+
+Entre na pasta:
+
+```bash
+cd softpet-petshop
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Inicie o servidor:
+
+```bash
+npm run dev
+```
+
+## Armazenamento
+
+Os dados são armazenados localmente no navegador por meio do LocalStorage. Cada usuário possui seus próprios registros no dispositivo utilizado.
+
+## Autor
+
+Desenvolvido como projeto de prática e aprendizado em desenvolvimento front-end.
+
+**GitHub:** [Seu perfil](https://github.com/Jore-X)
+**Portfólio:** [Meu portfólio](https://jorecode.netlify.app/)
