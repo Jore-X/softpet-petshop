@@ -8,7 +8,7 @@ Sistema de gerenciamento de pets desenvolvido com React e Vite, como parte do de
 
 ![Preview do SoftPet](./screenshots/preview.png)
 
-**Deploy:** [Acessar SoftPet]()
+**Deploy:** [Acessar SoftPet](https://softpet-petshop.vercel.app/)
 
 **Desafio original:** [SoftMakers Challenges](https://github.com/BrSoftMakers/desafio-junior-1)
 
