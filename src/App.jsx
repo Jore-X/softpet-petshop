@@ -143,13 +143,28 @@ function App() {
   // Controle de Paginação
 
   const [currentPage, setCurrentPage] = useState(1);
-
+  
+  // pets por pagina
+  const [petsPerPage, setPetsPerPage] = useState(
+    window.innerWidth <= 600 ? 5 : 10,
+  );
+  
   useEffect(() => {
     setCurrentPage(1);
-  }, [search]);
+  }, [search, petsPerPage]);
 
-  // pets por pagina
-  const petsPerPage = 8;
+  // pra atualizar os pets por pagina de acordo com o tamanho da tela
+  useEffect(() => {
+    function handlerResize() {
+      setPetsPerPage(window.innerWidth <= 600 ? 5 : 10);
+    }
+
+    window.addEventListener("resize", handlerResize);
+
+    return () => {
+      window.removeEventListener("resize", handlerResize);
+    };
+  }, []);
 
   // Math.max retorna o valor maior entre os dois
   // previne que totalPages se torne 0 se não encontrar nenhum pet.
