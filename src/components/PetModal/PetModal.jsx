@@ -155,9 +155,7 @@ function PetModal(props) {
           <div className="itemGrid">
             <label htmlFor="inputDate">
               <img src={calendar} alt="" />
-              <span>
-                Nascimento <span>(Aproximado)</span>
-              </span>
+              <span>Nascimento</span>
             </label>
             <input
               readOnly={props.choice_modal === "toDelete"}
